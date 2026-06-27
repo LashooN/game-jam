@@ -39,8 +39,10 @@ var in_progress = false
 func _ready():
 	%SkipBtn.pressed.connect(finish)
 	%NextBtn.pressed.connect(iter)
+	%PrevBtn.pressed.connect(prev)
 	
 	%SkipBtn.focus_mode = Control.FOCUS_NONE
+	%PrevBtn.focus_mode = Control.FOCUS_NONE
 	%NextBtn.focus_mode = Control.FOCUS_NONE
 
 func start():
@@ -48,19 +50,31 @@ func start():
 		return
 	in_progress = true
 	visible = true
-	iter()
+	render()
 
+func prev():
+	if cur_idx >= 1:
+		cur_idx -= 1
+		render()
+	
 func iter():
+	cur_idx += 1
+	
 	if cur_idx >= tutorial.size():
 		finish()
 		return
 		
+	if cur_idx == 4:
+		Global.world.meteor_manager.spawn_rand_meteor(Global.world.meteor_manager.get_wave_data(1))
+		
+	render()
+	
+func render():
 	%Title.text = tutorial[cur_idx].title
 	%Description.text = tutorial[cur_idx].description
 	%Progress.text = str(cur_idx + 1) + "/" + str(tutorial.size())
 	%NextBtn.text = "Finish" if cur_idx == tutorial.size() - 1 else "Next"
 	%SkipBtn.visible = cur_idx < tutorial.size() - 1
-	cur_idx += 1
 
 func finish():
 	finished = true

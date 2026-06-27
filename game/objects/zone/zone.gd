@@ -19,6 +19,14 @@ func _ready():
 	if Engine.is_editor_hint():
 		return
 		
+	get_viewport().size_changed.connect(reset)
+	reset()
+
+func reset():
+	print("reset")
+	for child in get_children():
+		child.queue_free()
+	
 	_calc_rects()
 	
 	for r in rects:
@@ -38,6 +46,7 @@ func _ready():
 		area.area_exited.connect(exited.emit)
 		
 		add_child(area)
+	
 
 func _calc_rects() -> void:
 	var s: Vector2
@@ -47,8 +56,7 @@ func _calc_rects() -> void:
 			ProjectSettings.get_setting("display/window/size/viewport_height")
 		)
 	else:
-		#s = get_viewport().get_visible_rect().size
-		s = Vector2(1920, 1080)
+		s = get_viewport().get_visible_rect().size
 
 	var w := s.x / 2
 	var h := s.y / 2

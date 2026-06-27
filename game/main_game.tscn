@@ -5,10 +5,31 @@
 [ext_resource type="PackedScene" uid="uid://d262e0yq6t38t" path="res://ui/upgrade/upgrade.tscn" id="4_t4f2l"]
 [ext_resource type="PackedScene" uid="uid://cwoqwp0qun1qg" path="res://ui/tutorial/tutorial.tscn" id="5_6o72v"]
 [ext_resource type="PackedScene" uid="uid://snkm03onh2ug" path="res://ui/game_over/game_over.tscn" id="5_433cb"]
+[ext_resource type="Shader" uid="uid://72imn3wuc6nb" path="res://shaders/bg.gdshader" id="6_6o72v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v3atx"]
+shader = ExtResource("6_6o72v")
+shader_parameter/star_density = 0.02
+shader_parameter/star_size = 0.3
+shader_parameter/twinkle_speed = 1.5
+shader_parameter/twinkle_strength = 0.4
+shader_parameter/parallax_offset = Vector2(0, 0)
 
 [node name="MainGame" type="Node" unique_id=583194893]
 process_mode = 3
 script = ExtResource("1_3fham")
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=993736227]
+layer = -100
+
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=1631614715]
+material = SubResource("ShaderMaterial_v3atx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="WorldParent" type="Node2D" parent="." unique_id=1642898177]
 process_mode = 1

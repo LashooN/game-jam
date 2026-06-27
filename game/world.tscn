@@ -65,7 +65,7 @@ bus = &"Muffled"
 
 [node name="Shoot" type="AudioStreamPlayer" parent="SoundManager" unique_id=2009698982]
 stream = ExtResource("11_rddb8")
-volume_db = -20.0
+volume_db = -18.0
 max_polyphony = 10
 bus = &"Muffled"
 
@@ -77,12 +77,12 @@ bus = &"Muffled"
 
 [node name="Money" type="AudioStreamPlayer" parent="SoundManager" unique_id=759910055]
 stream = ExtResource("13_j15d7")
-volume_db = -17.5
+volume_db = -20.0
 max_polyphony = 10
 
 [node name="Reload" type="AudioStreamPlayer" parent="SoundManager" unique_id=700986161]
 stream = ExtResource("14_s7c85")
-volume_db = -22.0
+volume_db = -25.0
 pitch_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=305307081]

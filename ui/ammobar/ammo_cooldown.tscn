@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cn7qwwshc6ugj"]
+
+[ext_resource type="Script" uid="uid://vie274dt7pis" path="res://ui/ammobar/ammo_cooldown.gd" id="1_qlavq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vw0em"]
+bg_color = Color(0.32915837, 0.3291584, 0.3291583, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3f6n"]
+bg_color = Color(0.43441567, 0.67941797, 0.25591716, 1)
+
+[node name="AmmoCooldown" type="ProgressBar" unique_id=226068572]
+custom_minimum_size = Vector2(70, 20)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 19.0
+offset_right = 35.0
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_vw0em")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q3f6n")
+max_value = 1.0
+step = 0.001
+value = 1.0
+show_percentage = false
+script = ExtResource("1_qlavq")

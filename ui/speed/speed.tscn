@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://10a8t7oqq4j1"]
+
+[ext_resource type="Script" uid="uid://cdjls76kfydnq" path="res://ui/speed/speed.gd" id="1_d5din"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w75iv"]
+bg_color = Color(0.18234137, 0.5342833, 0.5343149, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imuuq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5din"]
+bg_color = Color(0.016529923, 0.112394325, 0.08411122, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Speed" type="PanelContainer" unique_id=258535936]
+custom_minimum_size = Vector2(0, 50)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w75iv")
+script = ExtResource("1_d5din")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1740260643]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2" unique_id=551424369]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer2" unique_id=864818852]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Speed"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer2/HBoxContainer2" unique_id=1463308886]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_imuuq")
+
+[node name="Btn10" type="Button" parent="MarginContainer2/HBoxContainer2" unique_id=949490568]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d5din")
+toggle_mode = true
+text = "0.1x"
+
+[node name="Btn100" type="Button" parent="MarginContainer2/HBoxContainer2" unique_id=801177963]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d5din")
+toggle_mode = true
+text = "1x"
+
+[node name="Btn200" type="Button" parent="MarginContainer2/HBoxContainer2" unique_id=2145288533]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d5din")
+toggle_mode = true
+text = "2x"
+
+[node name="Btn300" type="Button" parent="MarginContainer2/HBoxContainer2" unique_id=1964536098]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d5din")
+toggle_mode = true
+text = "3x"

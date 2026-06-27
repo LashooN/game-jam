@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dt33aqr1uv5bp"]
+
+[ext_resource type="Script" uid="uid://brn2p0t0xot85" path="res://game/main_game.gd" id="1_3fham"]
+[ext_resource type="PackedScene" uid="uid://drd08blbmsoem" path="res://ui/hud/hud.tscn" id="2_t4f2l"]
+[ext_resource type="PackedScene" uid="uid://d262e0yq6t38t" path="res://ui/upgrade/upgrade.tscn" id="4_t4f2l"]
+[ext_resource type="PackedScene" uid="uid://cwoqwp0qun1qg" path="res://ui/tutorial/tutorial.tscn" id="5_6o72v"]
+[ext_resource type="PackedScene" uid="uid://snkm03onh2ug" path="res://ui/game_over/game_over.tscn" id="5_433cb"]
+
+[node name="MainGame" type="Node" unique_id=583194893]
+process_mode = 3
+script = ExtResource("1_3fham")
+
+[node name="WorldParent" type="Node2D" parent="." unique_id=1642898177]
+process_mode = 1
+
+[node name="Hud" parent="." unique_id=865107488 instance=ExtResource("2_t4f2l")]
+
+[node name="Menu" type="CanvasLayer" parent="." unique_id=977683596]
+process_mode = 1
+layer = 10
+visible = false
+
+[node name="Upgrade" parent="." unique_id=1809751843 instance=ExtResource("4_t4f2l")]
+
+[node name="GameOver" parent="." unique_id=1888020640 instance=ExtResource("5_433cb")]
+visible = false
+
+[node name="Tutorial" parent="." unique_id=76696969 instance=ExtResource("5_6o72v")]
+visible = false

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c8gr02yl3ckke"]
+
+[ext_resource type="Script" uid="uid://cxultps4htujg" path="res://entities/bullet/bullet.gd" id="1_2kyv7"]
+[ext_resource type="Texture2D" uid="uid://bvdidawel565n" path="res://assets/bullet.png" id="2_b4ffb"]
+[ext_resource type="Script" uid="uid://cjbge5j57a005" path="res://components/gravity_component.gd" id="3_5h0jh"]
+[ext_resource type="Script" uid="uid://8pw0lsvlb48e" path="res://components/hurtbox_component.gd" id="4_25cl0"]
+[ext_resource type="Script" uid="uid://big2iowwsi654" path="res://components/health_component.gd" id="5_b4ffb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25cl0"]
+size = Vector2(12, 6)
+
+[node name="Bullet" type="Area2D" unique_id=196993890]
+collision_layer = 8
+collision_mask = 13
+script = ExtResource("1_2kyv7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1367302872]
+position = Vector2(-4, 1.4210855e-14)
+rotation = 1.5707964
+scale = Vector2(0.4, 0.5)
+texture = ExtResource("2_b4ffb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1702772045]
+shape = SubResource("RectangleShape2D_25cl0")
+
+[node name="GravityComponent" type="Node" parent="." unique_id=812895912]
+unique_name_in_owner = true
+script = ExtResource("3_5h0jh")
+metadata/_custom_type_script = "uid://cjbge5j57a005"
+
+[node name="HurtboxComponent" type="Node" parent="." unique_id=1025694231 node_paths=PackedStringArray("health_component")]
+script = ExtResource("4_25cl0")
+damage = 50.0
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://8pw0lsvlb48e"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=185193683]
+script = ExtResource("5_b4ffb")
+max_health = 1.0
+metadata/_custom_type_script = "uid://big2iowwsi654"
+
+[node name="Timeout" type="Timer" parent="." unique_id=35727220]
+wait_time = 15.0
+one_shot = true

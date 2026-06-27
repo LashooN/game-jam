@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://vlonubv1vq83"]
+
+[ext_resource type="Script" uid="uid://d3csi5wt3km1g" path="res://entities/trajectory/trajectory.gd" id="1_lgtbf"]
+
+[node name="Trajectory" type="Node2D" unique_id=1334546213]
+script = ExtResource("1_lgtbf")
+
+[node name="Labels" type="Node" parent="." unique_id=1153381157]

@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://drd08blbmsoem"]
+
+[ext_resource type="Script" uid="uid://c3ato44otyua4" path="res://ui/hud/hud.gd" id="1_xmswo"]
+[ext_resource type="PackedScene" uid="uid://10a8t7oqq4j1" path="res://ui/speed/speed.tscn" id="2_4d6w6"]
+[ext_resource type="PackedScene" uid="uid://dejwj8va1n000" path="res://ui/hud/sound.tscn" id="3_e0nub"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmswo"]
+bg_color = Color(0.18234137, 0.5342833, 0.5343149, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4d6w6"]
+bg_color = Color(0.18234137, 0.5342833, 0.5343149, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e0nub"]
+
+[node name="Hud" type="CanvasLayer" unique_id=865107488]
+process_mode = 1
+layer = 10
+script = ExtResource("1_xmswo")
+
+[node name="Control" type="Control" parent="." unique_id=216677624]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1418061480]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 250.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xmswo")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer" unique_id=895943720]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer" unique_id=947120398]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=810596953]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4d6w6")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2" unique_id=814116096]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer" unique_id=1988899230]
+layout_mode = 2
+
+[node name="WaveLabel" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=374085523]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Wave"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="Control/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=1417956288]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_e0nub")
+
+[node name="Wave" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=559436343]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=125786202]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4d6w6")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=350116670]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=1388505794]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1810538836]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Money"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="Control/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=404365086]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_e0nub")
+
+[node name="Money" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=245647644]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "$20000"
+horizontal_alignment = 1
+
+[node name="Speed" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=258535936 instance=ExtResource("2_4d6w6")]
+layout_mode = 2
+
+[node name="Sound" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=153734965 instance=ExtResource("3_e0nub")]
+layout_mode = 2

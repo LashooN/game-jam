@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://lpe27efet5v8"]
+
+[ext_resource type="Script" uid="uid://ctn38t24o73vh" path="res://entities/meteor/meteor.gd" id="1_u7son"]
+[ext_resource type="Script" uid="uid://cjbge5j57a005" path="res://components/gravity_component.gd" id="3_xagob"]
+[ext_resource type="Script" uid="uid://8pw0lsvlb48e" path="res://components/hurtbox_component.gd" id="4_nntoe"]
+[ext_resource type="Script" uid="uid://big2iowwsi654" path="res://components/health_component.gd" id="5_1k7xb"]
+[ext_resource type="Shader" uid="uid://b2c4tao1rmrcv" path="res://shaders/meteor.gdshader" id="5_3wv8l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fun6a"]
+shader = ExtResource("5_3wv8l")
+shader_parameter/origin_offset = Vector2(0, 0)
+shader_parameter/base_color = Color(0.36, 0.34, 0.32, 1)
+shader_parameter/seed = 0.0
+shader_parameter/crack_intensity = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/scale = 18.0
+shader_parameter/crater_scale = 4.76400020254
+shader_parameter/glow_strength = 0.0
+shader_parameter/light_dir_2d = Vector2(-0.65, -0.85)
+shader_parameter/debris = false
+shader_parameter/debris_count = 7.41600020976
+shader_parameter/debris_coverage = 0.45
+shader_parameter/collect_glow_speed = 4.0
+shader_parameter/collect_glow_color = Color(0.2, 0.9, 0.2, 1)
+shader_parameter/collect_glow_width = 0.4
+
+[node name="Meteor" type="Area2D" unique_id=1650705940]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_u7son")
+
+[node name="GravityComponent" type="Node" parent="." unique_id=1651907483]
+unique_name_in_owner = true
+script = ExtResource("3_xagob")
+metadata/_custom_type_script = "uid://cjbge5j57a005"
+
+[node name="HurtboxComponent" type="Node" parent="." unique_id=1668808131 node_paths=PackedStringArray("health_component")]
+script = ExtResource("4_nntoe")
+damage = 100.0
+health_component = NodePath("../HealthComponent")
+mass = 10.0
+metadata/_custom_type_script = "uid://8pw0lsvlb48e"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=2118800058]
+script = ExtResource("5_1k7xb")
+metadata/_custom_type_script = "uid://big2iowwsi654"
+
+[node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=415260730]
+show_rect = false
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=437555506]
+material = SubResource("ShaderMaterial_fun6a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1886275046]

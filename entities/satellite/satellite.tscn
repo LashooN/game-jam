@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://qyppgyp81um7"]
+
+[ext_resource type="Script" uid="uid://ci3p86rw2ur17" path="res://entities/satellite/satellite.gd" id="1_47pra"]
+[ext_resource type="Texture2D" uid="uid://bwwetp4tf1qik" path="res://assets/SpaceShip.png" id="2_q3f6n"]
+[ext_resource type="Script" uid="uid://big2iowwsi654" path="res://components/health_component.gd" id="3_fook1"]
+[ext_resource type="Script" uid="uid://cjbge5j57a005" path="res://components/gravity_component.gd" id="4_qr8mh"]
+[ext_resource type="Script" uid="uid://8pw0lsvlb48e" path="res://components/hurtbox_component.gd" id="5_rh125"]
+[ext_resource type="Script" uid="uid://dbww4po584fdv" path="res://components/weapon_component.gd" id="6_vw0em"]
+[ext_resource type="PackedScene" uid="uid://cn7qwwshc6ugj" path="res://ui/ammobar/ammo_cooldown.tscn" id="7_q3f6n"]
+[ext_resource type="Texture2D" uid="uid://bxl8ne4j1ti4n" path="res://assets/fire.png" id="8_508r2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blaqe"]
+size = Vector2(26, 29)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3f6n"]
+radius = 35.128338
+
+[node name="Satellite" type="Area2D" unique_id=76081609]
+collision_layer = 2
+collision_mask = 47
+script = ExtResource("1_47pra")
+
+[node name="Ship" type="Node2D" parent="." unique_id=1745254887]
+
+[node name="ShipSprite" type="Sprite2D" parent="Ship" unique_id=976929425]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_q3f6n")
+flip_v = true
+
+[node name="Fire" type="Node2D" parent="Ship" unique_id=727410449]
+position = Vector2(0, -14.1)
+
+[node name="FireSprite" type="Sprite2D" parent="Ship/Fire" unique_id=397553145]
+position = Vector2(-6.8, -9)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_508r2")
+flip_v = true
+
+[node name="FireSprite2" type="Sprite2D" parent="Ship/Fire" unique_id=936529898]
+position = Vector2(6.8, -9)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_508r2")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=371957624]
+visible = false
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_blaqe")
+metadata/_edit_lock_ = true
+
+[node name="HealthComponent" type="Node" parent="." unique_id=193339082]
+unique_name_in_owner = true
+script = ExtResource("3_fook1")
+max_health = 10.0
+metadata/_custom_type_script = "uid://big2iowwsi654"
+
+[node name="GravityComponent" type="Node" parent="." unique_id=1133040532]
+unique_name_in_owner = true
+script = ExtResource("4_qr8mh")
+metadata/_custom_type_script = "uid://cjbge5j57a005"
+
+[node name="HurtboxComponent" type="Node" parent="." unique_id=2131471747 node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_rh125")
+health_component = NodePath("../HealthComponent")
+ignore_dmg_col_layer = 8
+metadata/_custom_type_script = "uid://8pw0lsvlb48e"
+
+[node name="WeaponComponent" type="Node" parent="." unique_id=6119761]
+unique_name_in_owner = true
+script = ExtResource("6_vw0em")
+metadata/_custom_type_script = "uid://dbww4po584fdv"
+
+[node name="AmmoCooldown" parent="." unique_id=226068572 node_paths=PackedStringArray("weapon") instance=ExtResource("7_q3f6n")]
+offset_top = 33.0
+offset_bottom = 53.0
+mouse_filter = 2
+weapon = NodePath("../WeaponComponent")
+
+[node name="CollectionArea" type="Area2D" parent="." unique_id=71819910]
+visible = false
+collision_layer = 64
+collision_mask = 32
+
+[node name="A" type="CollisionShape2D" parent="CollectionArea" unique_id=1825189433]
+shape = SubResource("CircleShape2D_q3f6n")

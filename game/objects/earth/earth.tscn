@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://d0cqoylqxr3yn"]
+
+[ext_resource type="Script" uid="uid://cvcc26efg3k7n" path="res://game/objects/earth/earth.gd" id="1_qed2y"]
+[ext_resource type="Script" uid="uid://big2iowwsi654" path="res://components/health_component.gd" id="2_s8ynp"]
+[ext_resource type="PackedScene" uid="uid://cgm4deq5yewap" path="res://ui/healthbar/healthbar.tscn" id="3_gu7tn"]
+[ext_resource type="Texture2D" uid="uid://c5u2ckflvg3w2" path="res://game/objects/earth/kill.jpg" id="3_k2jvx"]
+[ext_resource type="Script" uid="uid://8pw0lsvlb48e" path="res://components/hurtbox_component.gd" id="4_gu7tn"]
+[ext_resource type="Shader" uid="uid://ptkx2alvrwl7" path="res://shaders/earth.gdshader" id="6_k2jvx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k2jvx"]
+shader = ExtResource("6_k2jvx")
+shader_parameter/aspect_ratio = 2.0
+shader_parameter/rotation_speed = 0.1
+shader_parameter/as_shadow = false
+shader_parameter/color_ocean_deep = Color(0.1, 0.27, 0.52, 1)
+shader_parameter/color_ocean_shallow = Color(0.22, 0.49, 0.72, 1)
+shader_parameter/color_land = Color(0.35, 0.6, 0.28, 1)
+shader_parameter/color_land_high = Color(0.56, 0.74, 0.42, 1)
+shader_parameter/color_desert = Color(0.82, 0.73, 0.48, 1)
+shader_parameter/color_ice = Color(0.92, 0.95, 0.98, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbwya"]
+radius = 86.00581
+
+[node name="Earth" type="Area2D" unique_id=673363023]
+collision_mask = 15
+script = ExtResource("1_qed2y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=42121366]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_k2jvx")
+rotation = 0.40142572
+scale = Vector2(1.2, 2.4)
+texture = ExtResource("3_k2jvx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1772669683]
+shape = SubResource("CircleShape2D_qbwya")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=181084551]
+script = ExtResource("2_s8ynp")
+max_health = 1000.0
+metadata/_custom_type_script = "uid://big2iowwsi654"
+
+[node name="HurtboxComponent" type="Node" parent="." unique_id=650118285 node_paths=PackedStringArray("health_component")]
+script = ExtResource("4_gu7tn")
+damage = 10000.0
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://8pw0lsvlb48e"
+
+[node name="ProgressBar" parent="." unique_id=48698826 node_paths=PackedStringArray("health_component") instance=ExtResource("3_gu7tn")]
+mouse_filter = 2
+health_component = NodePath("../HealthComponent")

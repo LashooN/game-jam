@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dejwj8va1n000"]
+
+[ext_resource type="Script" uid="uid://c4kd4w3k76lpx" path="res://ui/hud/sound.gd" id="1_mdvq8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nxcab"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e0nub"]
+
+[node name="Sound" type="PanelContainer" unique_id=153734965]
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nxcab")
+script = ExtResource("1_mdvq8")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=712836282]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2" unique_id=666713995]
+layout_mode = 2
+
+[node name="SoundLabel" type="Label" parent="MarginContainer2/HBoxContainer" unique_id=446138549]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Sound"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer2/HBoxContainer" unique_id=1930997950]
+layout_mode = 2
+theme_override_constants/separation = 12
+theme_override_styles/separator = SubResource("StyleBoxEmpty_e0nub")
+
+[node name="Slider" type="HSlider" parent="MarginContainer2/HBoxContainer" unique_id=108009684]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01

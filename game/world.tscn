@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://ds0h4nvuf56ay"]
+
+[ext_resource type="Script" uid="uid://c4ue66hgxvlnm" path="res://game/world.gd" id="1_4xpgs"]
+[ext_resource type="PackedScene" uid="uid://d0cqoylqxr3yn" path="res://game/objects/earth/earth.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://b72xt0mx3yv1w" path="res://game/manager/bullet_manager.gd" id="2_fhh06"]
+[ext_resource type="PackedScene" uid="uid://dsm3m4e56ykth" path="res://game/objects/zone/zone.tscn" id="3_ibklf"]
+[ext_resource type="Script" uid="uid://bsuvhd5pprl65" path="res://game/manager/meteor_manager.gd" id="3_m4twg"]
+[ext_resource type="Script" uid="uid://bckhgv5w2kwts" path="res://game/manager/player_manager.gd" id="5_fhh06"]
+[ext_resource type="Script" uid="uid://bdpxeji6ax423" path="res://game/manager/trajectory_manager.gd" id="6_m4twg"]
+[ext_resource type="Script" uid="uid://ckw6e5e6bluiy" path="res://game/manager/transition_manager.gd" id="8_0q2ew"]
+[ext_resource type="Script" uid="uid://dfxguouam8r8p" path="res://game/manager/sound_manager.gd" id="9_ibklf"]
+[ext_resource type="AudioStream" uid="uid://cx31ojjxtif8w" path="res://sounds/boost.wav" id="10_cjey8"]
+[ext_resource type="AudioStream" uid="uid://g4ipp5ja7jg6" path="res://sounds/shoot.wav" id="11_rddb8"]
+[ext_resource type="AudioStream" uid="uid://b5vpd3gcwcltn" path="res://sounds/explosion.wav" id="12_rddb8"]
+[ext_resource type="AudioStream" uid="uid://bgxjl48iml0n6" path="res://sounds/money.wav" id="13_j15d7"]
+
+[node name="World" type="Node2D" unique_id=445761335]
+script = ExtResource("1_4xpgs")
+
+[node name="Level" type="Node" parent="." unique_id=1801784363]
+
+[node name="Earth" parent="Level" unique_id=300177241 instance=ExtResource("1_f3sb7")]
+unique_name_in_owner = true
+
+[node name="KillZone" parent="Level" unique_id=752267278 instance=ExtResource("3_ibklf")]
+inner = 200.0
+outer = 300.0
+preview_color = Color(0.6392157, 0.07450981, 0.03529412, 0.2509804)
+
+[node name="SpawnZone" parent="Level" unique_id=1595153812 instance=ExtResource("3_ibklf")]
+inner = 40.0
+outer = 50.0
+preview_color = Color(0.3205615, 0.6386731, 0.38201058, 0.2509804)
+
+[node name="BulletManager" type="Node" parent="." unique_id=1301145313]
+script = ExtResource("2_fhh06")
+metadata/_custom_type_script = "uid://b72xt0mx3yv1w"
+
+[node name="MeteorManager" type="Node" parent="." unique_id=1156793486]
+script = ExtResource("3_m4twg")
+metadata/_custom_type_script = "uid://bsuvhd5pprl65"
+
+[node name="PlayerManager" type="Node" parent="." unique_id=1930156901]
+script = ExtResource("5_fhh06")
+metadata/_custom_type_script = "uid://bckhgv5w2kwts"
+
+[node name="TrajectoryManager" type="Node" parent="." unique_id=1531960354]
+script = ExtResource("6_m4twg")
+metadata/_custom_type_script = "uid://bdpxeji6ax423"
+
+[node name="TransitionManager" type="Node" parent="." unique_id=1614776217 node_paths=PackedStringArray("meteors")]
+script = ExtResource("8_0q2ew")
+meteors = NodePath("../MeteorManager")
+metadata/_custom_type_script = "uid://ckw6e5e6bluiy"
+
+[node name="SoundManager" type="Node" parent="." unique_id=1442659540]
+script = ExtResource("9_ibklf")
+metadata/_custom_type_script = "uid://dfxguouam8r8p"
+
+[node name="Boost" type="AudioStreamPlayer" parent="SoundManager" unique_id=1007365004]
+stream = ExtResource("10_cjey8")
+volume_db = -15.0
+bus = &"Muffled"
+
+[node name="Shoot" type="AudioStreamPlayer" parent="SoundManager" unique_id=2009698982]
+stream = ExtResource("11_rddb8")
+volume_db = -20.0
+max_polyphony = 10
+bus = &"Muffled"
+
+[node name="Explosion" type="AudioStreamPlayer" parent="SoundManager" unique_id=663117981]
+stream = ExtResource("12_rddb8")
+volume_db = -15.0
+max_polyphony = 10
+bus = &"Muffled"
+
+[node name="Money" type="AudioStreamPlayer" parent="SoundManager" unique_id=759910055]
+stream = ExtResource("13_j15d7")
+volume_db = -17.5
+max_polyphony = 10
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=305307081]

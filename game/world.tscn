@@ -65,7 +65,7 @@ bus = &"Muffled"
 
 [node name="Shoot" type="AudioStreamPlayer" parent="SoundManager" unique_id=2009698982]
 stream = ExtResource("11_rddb8")
-volume_db = -18.0
+volume_db = -20.0
 max_polyphony = 10
 bus = &"Muffled"
 

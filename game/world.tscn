@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://g4ipp5ja7jg6" path="res://sounds/shoot.wav" id="11_rddb8"]
 [ext_resource type="AudioStream" uid="uid://b5vpd3gcwcltn" path="res://sounds/explosion.wav" id="12_rddb8"]
 [ext_resource type="AudioStream" uid="uid://bgxjl48iml0n6" path="res://sounds/money.wav" id="13_j15d7"]
+[ext_resource type="AudioStream" uid="uid://slok04wuvaow" path="res://sounds/reload.wav" id="14_s7c85"]
 
 [node name="World" type="Node2D" unique_id=445761335]
 script = ExtResource("1_4xpgs")
@@ -78,5 +79,10 @@ bus = &"Muffled"
 stream = ExtResource("13_j15d7")
 volume_db = -17.5
 max_polyphony = 10
+
+[node name="Reload" type="AudioStreamPlayer" parent="SoundManager" unique_id=700986161]
+stream = ExtResource("14_s7c85")
+volume_db = -22.0
+pitch_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=305307081]

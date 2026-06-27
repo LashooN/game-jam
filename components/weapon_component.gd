@@ -46,7 +46,12 @@ func _ready() -> void:
 	alter_speed_mode(0)
 	
 	reload_timer.timeout.connect(_on_reload_timeout)
+	State.upgrade_purchased.connect(_on_upgrade_purhased)
 	ammo = magazine
+
+func _on_upgrade_purhased(upg):
+	if upg == "magazine_capacity":
+		reload()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -90,7 +95,7 @@ func shoot():
 	State.money -= Consts.BULLET_COST
 	ammo -= 1
 	Global.world.sound_manager.play("shoot")
-	if ammo <= 0:
+	if ammo <= 0: 
 		var reload_time = State.get_upgrade_value("fire_rate") * (1 + float(State.get_upgrade_value("magazine_capacity") - 1) * 0.75) 
 		reload_timer.start(reload_time)
 	
@@ -98,4 +103,8 @@ func shoot():
 	_parent.gravity_component.apply_impulse(-vel.normalized() * 3.0)
 
 func _on_reload_timeout():
+	Global.world.sound_manager.play("reload")
+	reload()
+
+func reload():
 	ammo = State.get_upgrade_value("magazine_capacity")

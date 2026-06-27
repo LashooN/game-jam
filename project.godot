@@ -34,7 +34,7 @@ window/size/window_height_override=1100
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/github_copilot/plugin.cfg", "res://addons/quick_exporter/plugin.cfg")
+enabled=PackedStringArray("res://addons/quick_exporter/plugin.cfg")
 
 [file_customization]
 

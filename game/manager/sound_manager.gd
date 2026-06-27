@@ -4,6 +4,7 @@ class_name SoundManager extends Node
 @onready var shoot: AudioStreamPlayer = $Shoot
 @onready var explosion: AudioStreamPlayer = $Explosion
 @onready var money: AudioStreamPlayer = $Money
+@onready var reload: AudioStreamPlayer = $Reload
 
 var sounds = {}
 
@@ -13,7 +14,8 @@ func _ready():
 		"boost": boost,
 		"shoot": shoot,
 		"explosion": explosion,
-		"money": money
+		"money": money,
+		"reload": reload
 	}
 
 func is_playing(sound_name: String) -> bool:
